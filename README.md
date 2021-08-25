@@ -16,7 +16,8 @@ The team includes:
 
 * [Installation prerequisites](#installation-prerequisites)
     * [Angular](#Angular)
-	    * [D3.js](#D3.js)
+	* [D3.js](#D3.js)
+
 
 
 ## Installation Prerequisites
