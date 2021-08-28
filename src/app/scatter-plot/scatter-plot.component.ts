@@ -44,7 +44,7 @@ export class ScatterPlotComponent implements OnInit {
         .attr("height", height1)
         .attr("class", "ScatterPlotClass")
         .append("g")
-        .attr("transform", "translate(37,-2)");
+        .attr("transform", "translate(37,4)");
 
     var tooltipScatterlot = d3.select("#tooltip_ScatterPlot")
         .attr("class", "tooltip")
@@ -56,10 +56,12 @@ export class ScatterPlotComponent implements OnInit {
         .call(xAxis)
         .append("text")
         .attr("class", "label")
-        .attr("x", width)
+        .attr("x", width-width/2)
         .attr("y", 25)
+        .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Populationn");
+        .attr("fill", "#000000")
+        .text("Population");
 
     var axis = width-520;
     var y_axis = ScatterPlot.append("g")
@@ -68,11 +70,12 @@ export class ScatterPlotComponent implements OnInit {
             .append("text")
             .attr("class", "text")
             .attr("transform", "rotate(-90)")
-            .attr("x", 0)
-            .attr("y", 15)
+            .attr("x", -5)
+            .attr("y", 8)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Normalized v");
+            .attr("fill", "#000000")
+            .text("Normalized");
 
 
     var circles = ScatterPlot.selectAll("circle")
@@ -130,7 +133,7 @@ export class ScatterPlotComponent implements OnInit {
                 // revert circles to initial style
           circles.attr("class", "point");
           d3.selectAll(".county")
-              .style('stroke', '#636363')
+              .style('stroke', '#000000')
               .style('stroke-width', "1px");
 
           var brush_coords = event.selection;
@@ -180,12 +183,12 @@ export class ScatterPlotComponent implements OnInit {
       // populate table if one or more elements is brushed
         if (d_brushed.length > 0) {
             d3.selectAll(".county")
-          .style('stroke', '#636363')
+          .style('stroke', '#000000')
             .style('stroke-width', "1px");
             d_brushed.forEach(d_row => HighlightMap(d_row))
         } else {
             d3.selectAll(".county")
-          .style('stroke', '#636363')
+          .style('stroke', '#000000')
             .style('stroke-width', "1px");
         }
     }

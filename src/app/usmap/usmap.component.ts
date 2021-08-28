@@ -24,7 +24,7 @@ export class USmapComponent implements OnInit {
 
     var countyData = (topojson.feature(county, county.objects.counties) as unknown as FeatureCollection).features
 
-    var AvgCheck = [];
+    var AvgCheck:any = [];
     var ModelsData = models;
 
     var width:any = $("#map-layer").width();
@@ -53,76 +53,91 @@ export class USmapComponent implements OnInit {
           .attr('d', path)
         	.attr('vector-effect', 'non-scaling-stroke')
         	.attr('class', 'county')
-        	.attr('stroke', '#000000')
+        	.attr('stroke', 'black')
           //.attr('fill', 'teal')
           .attr('fill', (item)=>{
             var CountyID = Number(item["id"]);
             for (const [key, value] of Object.entries(models["COVIDhub-ensemble"])) {
               if(Number(key)==CountyID){
                 var p:any = value
-        				//console.log(key, value)
+        				//console.log(p)
         				var sumValue = 0
         				var avgValue = 0
         				var index:any = 0
         				var NanVal = 0
+						var AltofDiff;
 
                 for (const [key, value] of Object.entries(p)){
                   var diffValue:any = value
         					if(diffValue["diff"]=="NaN")
         					{
-        						diffValue["diff"] = 0
+								AltofDiff = 0;
         						NanVal = NanVal + 1;
         					}
-        					sumValue = sumValue+diffValue["diff"]
+							else{
+								AltofDiff = diffValue["diff"];
+							}
+        					sumValue = sumValue+AltofDiff;
         					index = key
         					//console.log(sumValue)
-        				}
+        		}
                 index = index - NanVal;
         				avgValue = sumValue/index;
         				AvgCheck.push(avgValue)
-        				//console.log(d3.max(AvgCheck))
-        				if(avgValue<=-1300)
+        				//console.log(d3.min(AvgCheck), CountyID)
+        				// if(avgValue<=-1000)
+        				// {
+						// 	//console.log("I am <= -1300: "+avgValue)
+        				// 	return "#67001f";
+        				// }
+        				if(avgValue<=-500)
         				{
-        					return "#67001f";
-        				}
-        				else if(avgValue>-1300 && avgValue<=-1000)
-        				{
+							//console.log("I am <= -1000: "+avgValue)
         					return "#b2182b";
-        				}
-        				else if(avgValue>-1000 && avgValue<=-500)
-        				{
-        					return "#d6604d";
         				}
         				else if(avgValue>-500 && avgValue<=-200)
         				{
-        					return "#f4a582";
+							//console.log("I am <= -500: "+avgValue)
+        					return "#d6604d";
         				}
         				else if(avgValue>-200 && avgValue<=-150)
         				{
-        					return "#fddbc7";
+							//console.log("I am <= -200: "+avgValue)
+        					return "#f4a582";
         				}
         				else if(avgValue>-150 && avgValue<=-100)
         				{
-        					return "#f7f7f7";
+							//console.log("I am <= -150: "+avgValue)
+        					return "#fddbc7";
         				}
         				else if(avgValue>-100 && avgValue<=0)
         				{
-        					return "#d1e5f0";
+							//console.log("I am <= -100: "+avgValue)
+        					return "#f7f7f7";
         				}
         				else if(avgValue>0 && avgValue<=100)
         				{
+							//console.log("I am <= -0: "+avgValue)
+        					return "#d1e5f0";
+        				}
+        				else if(avgValue>100 && avgValue<=150)
+        				{
+							//console.log("I am <= 100: "+avgValue)
         					return "#92c5de";
         				}
-        				else if(avgValue>100 && avgValue<=200)
+        				else if(avgValue>150 && avgValue<=200)
         				{
+							//console.log("I am <= 200: "+avgValue)
         					return "#4393c3";
         				}
-        				else if(avgValue>200 && avgValue<=300)
+        				else if(avgValue>200 && avgValue<=500)
         				{
+							//console.log("I am <= 300: "+avgValue)
         					return "#2166ac";
         				}
-        				else if(avgValue>300)
+        				else if(avgValue>500)
         				{
+							//console.log("I am > 100: "+avgValue)
         					return "#053061";
         				}
               }
@@ -170,12 +185,12 @@ export class USmapComponent implements OnInit {
           })
           .on('click', (event:any, d:any) => {
             d3.selectAll(".county")
-          		.style('stroke', '#636363')
+          		.style('stroke', '#000000')
                 .style('stroke-width', "1px");
 
             d3.selectAll(".clicked1")
                     .classed("clicked1", false)
-                    .style('stroke', '#636363')
+                    .style('stroke', '#000000')
                     .style('stroke-width', "1px");
 
            	 d3.select(event.currentTarget)

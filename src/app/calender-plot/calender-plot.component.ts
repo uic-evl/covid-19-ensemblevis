@@ -156,18 +156,18 @@ export class CalenderPlotComponent implements OnInit {
         	.attr('y', function(d) {  return yScale(d.model); })
         	.attr('x', function(d) { return xScale(d.week); })
         	.attr('fill', function(d) { 
-            if(d.error<=-1300){return "#67001f"}
-            else if(d.error>-1300 && d.error<=-1000){return "#b2182b"}
-            else if(d.error>-1000 && d.error<=-500){return "#d6604d"}
-            else if(d.error>-500 && d.error<=-200){return "#f4a582"}
-            else if(d.error>-200 && d.error<=-150){return "#fddbc7"}
-            else if(d.error>-150 && d.error<=-100){return "#d1e5f0"}
-            else if(d.error>-100 && d.error<=0){return "#92c5de"}
-            else if(d.error>0 && d.error<=100){return "#4393c3"}
-            else if(d.error>100 && d.error<=500){return "#2166ac"}
-            else if(d.error>500 && d.error<=1500){return "#053061"}
+            if(d.error<=-1000){return "#67001f"}
+            else if(d.error>-1000 && d.error<=-500){return "#b2182b"}
+            else if(d.error>-500 && d.error<=-200){return "#d6604d"}
+            else if(d.error>-200 && d.error<=-150){return "#f4a582"}
+            else if(d.error>-150 && d.error<=-100){return "#fddbc7"}
+            else if(d.error>-100 && d.error<=0){return "#f7f7f7"}
+            else if(d.error>0 && d.error<=100){return "#d1e5f0"}
+            else if(d.error>100 && d.error<=150){return "#92c5de"}
+            else if(d.error>150 && d.error<=200){return "#4393c3"}
+            else if(d.error>200 && d.error<=500){return "#2166ac"}
             else if(d.error==100000){return "#999999"}
-            else{return "#053061"};
+            else{return "#053061";};
            })
         	.attr('stroke', 'black')
         	.attr('stroke-width', '0.3px')
@@ -183,8 +183,8 @@ export class CalenderPlotComponent implements OnInit {
                    .duration(200)
                    .style("opacity", .9);
                  tooltipClenderPlot.html("Model name: " + d.model + "<br/>" +
-                            "Error:"  + errorVal + "<br/>" +
-                            "Week:"  + d.week + "<br/>")
+                            "Error: "  + errorVal + "<br/>" +
+                            "Week: "  + d.week + "<br/>")
                    .style("left", (event.pageX + 5) + "px")
                    .style("top", (event.pageY - 28) + "px");
         	})
