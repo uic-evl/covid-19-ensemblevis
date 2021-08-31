@@ -41,13 +41,13 @@ export class MapCalenderLegendComponent implements OnInit {
 
           for(var i=0;i<11;i++){
             key.append("g:rect")
-            .attr("y", i*35)
-            .attr("height", 35)
+            .attr("y", i*18)
+            .attr("height", 18)
             .attr("width", 18)
             .style("fill", colorRange[i])
             .style("opacity", "0.9");
 
-            var line = i*35
+            var line = i*18
 
             key.append("line")
               .attr("y", 37)
@@ -57,11 +57,11 @@ export class MapCalenderLegendComponent implements OnInit {
               .attr("transform", "translate(30, " + line + ")");
 
               key.append("text")
-                .attr("y", (i* 35)+14)
+                .attr("y", (i* 18)+9)
                 .attr("x", 30)
                 .attr("dy", ".35em")
                 .style("text-anchor", "start")
-                .style("font" ,"18px sans-serif")
+                .style("font" ,"12px sans-serif")
                 .text(String(legendText[i]));
           }
   }

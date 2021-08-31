@@ -1,9 +1,0 @@
-D3+Angular Tutorial links -
-
-1. https://edupala.com/how-to-use-angular-d3js-chart/
-2. https://blog.logrocket.com/data-visualization-angular-d3/
-3. https://medium.com/@dhormale/dynamic-interactive-data-visualizations-using-d3-js-and-angular-41770d7c66f7
-4. https://sinequa.github.io/sba-angular/tipstricks/d3-angular.html
-5. https://www.itsolutionstuff.com/post/angular-call-component-method-from-another-component-exampleexample.html
-6. https://observablehq.com/@d3/d3v6-migration-guide#events
-7. https://github.com/d3/d3/blob/main/CHANGES.md#changes-in-d3-60

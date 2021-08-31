@@ -13,7 +13,7 @@ import { ScatterPlotComponent } from './scatter-plot/scatter-plot.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  title = 'covid-project-angular';
+  title = 'COVID-19-EnsembleVis';
 
   public test(){
     let myapp = new USmapComponent();
@@ -25,7 +25,7 @@ export class AppComponent{
 
     Promise.all([
       d3.json("/assets/counties.json"),
-      d3.json("/assets/models2.json"),
+      d3.json("/assets/models.json"),
       d3.json("/assets/population.json"),
     ]).then(function(files) {
       myapp.drawMap(files[0], files[1])
