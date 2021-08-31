@@ -41,6 +41,8 @@ covid-19-ensemblevis/
 covid19-forecast-hub/
 ```
 
+The jupyter notebook `parser.ipynb` will save a json file (models.json) inside the folder `vis/src/assets/` containing the pre-processed data required by the interface.
+
 
 ## Building the project
 The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0. First install Angular CLI using `npm` (the default package manager for Node.js):
