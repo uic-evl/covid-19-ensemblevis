@@ -51,4 +51,4 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 npm install –g @angular/cli
 ```
 
-Next, run `ng build` to build the project and `ng serve` to create a server and serve the COVID-19 EnsembleVis application. The interface will be available at `http://localhost:4200/`.
+Next, run `ng build` inside the `vis` folder to build the project, and `ng serve` to create a server and serve the COVID-19 EnsembleVis application. The interface will be available at `http://localhost:4200/`.
